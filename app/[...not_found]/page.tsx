@@ -1,8 +1,6 @@
 'use client';
-import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const NotFound = () => {

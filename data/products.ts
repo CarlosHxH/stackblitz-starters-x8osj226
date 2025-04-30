@@ -1,5 +1,3 @@
-import { useCart } from '@/context/CartContext';
-
 export interface Product {
 	id: string;
 	name: string;
@@ -28,7 +26,7 @@ export const products: Product[] = [
 		name: 'Smartphone Galaxy X Pro',
 		description:
 			'O mais potente smartphone do mercado, com tela AMOLED de 6.5" e câmera de 108MP.',
-		price: 2499.99,
+		price: 24.99,
 		image: 'https://placehold.co/500x500/38B94A/FFFFFF.png?text=Smartphone',
 		categoryId: '1',
 		rating: 4.8,
@@ -50,7 +48,7 @@ export const products: Product[] = [
 		name: 'Smart TV LED 50"',
 		description:
 			'Televisão LED 4K com tecnologia HDR e sistema operacional inteligente.',
-		price: 3199.9,
+		price: 31.9,
 		image: 'https://placehold.co/500x500/38B94A/FFFFFF.png?text=SmartTV',
 		categoryId: '1',
 		rating: 4.7,
@@ -71,7 +69,7 @@ export const products: Product[] = [
 		name: 'Sofá Retrátil 3 Lugares',
 		description:
 			'Sofá confortável com tecido macio e design moderno para sua sala de estar.',
-		price: 1899.99,
+		price: 18.99,
 		image: 'https://placehold.co/500x500/38B94A/FFFFFF.png?text=Sofa',
 		categoryId: '2',
 		rating: 4.5,
@@ -92,7 +90,7 @@ export const products: Product[] = [
 		name: 'Tênis Esportivo Corrida',
 		description:
 			'Tênis leve e confortável para corridas diárias. Material respirável.',
-		price: 299.9,
+		price: 29.9,
 		image: 'https://placehold.co/500x500/38B94A/FFFFFF.png?text=Tenis',
 		categoryId: '5',
 		rating: 4.2,
@@ -114,7 +112,7 @@ export const products: Product[] = [
 		name: 'Kit Skincare Premium',
 		description:
 			'Kit completo com limpador, tônico, hidratante e sérum anti-idade.',
-		price: 349.9,
+		price: 34.9,
 		image: 'https://placehold.co/500x500/38B94A/FFFFFF.png?text=Skincare',
 		categoryId: '4',
 		rating: 4.9,
@@ -135,7 +133,7 @@ export const products: Product[] = [
 		name: 'Cafeteira Elétrica Programável',
 		description:
 			'Cafeteira automática com timer e sistema de filtragem avançado.',
-		price: 399.99,
+		price: 39.99,
 		image: 'https://placehold.co/500x500/38B94A/FFFFFF.png?text=Cafeteira',
 		categoryId: '8',
 		rating: 4.6,
@@ -157,7 +155,7 @@ export const products: Product[] = [
 		name: 'Notebook UltraSlim',
 		description:
 			'Notebook leve e potente com processador de última geração e 12h de bateria.',
-		price: 5699.9,
+		price: 56.9,
 		image: 'https://placehold.co/500x500/38B94A/FFFFFF.png?text=Notebook',
 		categoryId: '1',
 		rating: 4.7,
@@ -178,7 +176,7 @@ export const products: Product[] = [
 		name: 'Conjunto de Panelas Antiaderentes',
 		description:
 			'Kit com 5 panelas de alta qualidade com revestimento antiaderente.',
-		price: 499.99,
+		price: 49.99,
 		image: 'https://placehold.co/500x500/38B94A/FFFFFF.png?text=Panelas',
 		categoryId: '8',
 		rating: 4.3,

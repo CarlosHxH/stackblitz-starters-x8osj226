@@ -5,8 +5,7 @@ import {
 	SheetHeader,
 	SheetTitle,
 	SheetFooter,
-	SheetTrigger,
-	SheetClose,
+	SheetTrigger
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Minus, Plus, X } from 'lucide-react';
@@ -115,11 +114,11 @@ export const CartSidebar = memo(() => {
 								<p className="text-center text-gray-500">
 									Seu carrinho está vazio
 								</p>
-								<SheetClose className={'w-full'}>
+								<SheetTrigger className={'w-full'}>
 									<Button className={'border-2 w-full'}>
 										Continuar comprando
 									</Button>
-								</SheetClose>
+								</SheetTrigger>
 							</>
 						) : (
 							<>
@@ -127,13 +126,11 @@ export const CartSidebar = memo(() => {
 									<span>Total</span>
 									<span>{formatCurrency(totalPrice)}</span>
 								</div>
-								<Button
-									asChild
-									className="w-full border-2"
-									disabled={cartItems.length === 0}
-								>
-									<Link href="/checkout">Finalizar Compra</Link>
-								</Button>
+								<SheetTrigger asChild>
+									<Button asChild className={'w-full border-2'} disabled={cartItems.length === 0}>
+										<Link href={"/checkout"}>Finalizar Compras</Link>
+									</Button>
+								</SheetTrigger>
 							</>
 						)}
 					</div>

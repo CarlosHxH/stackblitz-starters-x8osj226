@@ -2,9 +2,10 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useState } from 'react';
-import { formatCurrency } from '@/lib/utils';
+import { calcularTaxaEntregaPorCep, formatCurrency } from '@/lib/utils';
 import { toast } from 'sonner';
 import { useCart } from '@/context/CartContext';
+import { mockDeliveryFees } from '@/data/mockData';
 
 export default function Checkout() {
 	const { cartItems = [] } = useCart();
@@ -15,8 +16,12 @@ export default function Checkout() {
 		(sum, item) => sum + item.product.price * item.quantity,
 		0
 	);
-	const deliveryFee =
+
+	const deliveryFee = calcularTaxaEntregaPorCep(cep) || 0;
+
+	const taxa =
 		cartItems.find((fee) => fee.id === selectedFee)?.product.price || 0;
+
 	const total = subtotal + deliveryFee;
 
 	const handleCepSearch = (e: React.FormEvent) => {
@@ -52,23 +57,23 @@ export default function Checkout() {
 							<Button type="submit">Calcular</Button>
 						</form>
 
+
 						{selectedFee && (
 							<div className="mt-4 space-y-2">
 								<h3 className="font-medium">Opções de Entrega:</h3>
-								{cartItems.map((fee) => (
-									<div
-										key={fee.id}
+								{mockDeliveryFees.map((fee) => (
+									<div key={fee.id}
 										className="flex items-center justify-between p-3 border rounded cursor-pointer hover:bg-gray-50"
-										onClick={() => setSelectedFee(fee.id)}
 									>
+										<Button className='w-full' disabled={(fee.minOrderValue>subtotal)} onClick={()=>setSelectedFee(fee.id)}>
 										<div>
-											<p className="font-medium">{fee.product.name}</p>
+											<p className="font-medium">{fee.name}</p>
 											<p className="text-sm text-gray-600">
-												{fee.product.description}
+												{fee.description}
 											</p>
 										</div>
 										<div className="flex items-center gap-2">
-											<span>{formatCurrency(fee.product.price)}</span>
+											<span>{formatCurrency(fee.price)}</span>
 											<div
 												className={`w-4 h-4 rounded-full border-2 ${
 													selectedFee === fee.id
@@ -77,6 +82,7 @@ export default function Checkout() {
 												}`}
 											/>
 										</div>
+										</Button>
 									</div>
 								))}
 							</div>

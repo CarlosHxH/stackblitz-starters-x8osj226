@@ -35,7 +35,7 @@ export interface DeliveryFee {
 	id: string;
 	name: string;
 	price: number; // Changed from 'fee' to 'price' to match usage in components
-	minOrderValue?: number;
+	minOrderValue: number;
 	description: string;
 	createdAt: string;
 	updatedAt: string;
