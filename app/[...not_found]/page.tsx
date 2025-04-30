@@ -6,15 +6,6 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 const NotFound = () => {
-	const route = useRouter();
-
-	useEffect(() => {
-		console.error(
-			'404 Error: User attempted to access non-existent route:',
-			location.pathname
-		);
-	}, [location.pathname]);
-
 	return (
 		<div className="min-h-screen flex items-center justify-center bg-market-neutral-100">
 			<div className="text-center bg-white p-12 rounded-lg shadow-sm max-w-md">
