@@ -13,6 +13,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import { useStore } from '@/context/StoreContext';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const formSchema = z.object({
 	email: z.string().email('Email inválido'),
@@ -30,7 +32,7 @@ const USER_CREDENTIALS = {
 };
 
 export default function Login() {
-	const navigate = useNavigate();
+	const navigate = useRouter();
 	const { toggleAdminMode } = useStore();
 
 	const form = useForm<z.infer<typeof formSchema>>({
@@ -53,10 +55,10 @@ export default function Login() {
 		if (isAdmin) {
 			toast.success('Login realizado com sucesso como administrador!');
 			toggleAdminMode(); // Activate admin mode
-			navigate('/admin');
+			navigate.push('/admin');
 		} else if (isUser) {
 			toast.success('Login realizado com sucesso!');
-			navigate('/');
+			navigate.push('/');
 		} else {
 			toast.error('Credenciais inválidas');
 		}
@@ -123,7 +125,7 @@ export default function Login() {
 
 				<p className="text-center text-sm">
 					Não tem uma conta?{' '}
-					<Link to="/register" className="text-autoshop-blue hover:underline">
+					<Link href="/register" className="text-autoshop-blue hover:underline">
 						Registre-se
 					</Link>
 				</p>
