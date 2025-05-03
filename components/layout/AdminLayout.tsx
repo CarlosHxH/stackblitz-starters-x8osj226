@@ -1,6 +1,5 @@
 
 import { Boxes, Package, Settings, User, TagIcon } from "lucide-react";
-import { Link, Outlet } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -13,6 +12,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 const menuItems = [
   {
@@ -42,7 +42,7 @@ const menuItems = [
   },
 ];
 
-export const AdminLayout = () => {
+export const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
@@ -55,7 +55,7 @@ export const AdminLayout = () => {
                   {menuItems.map((item) => (
                     <SidebarMenuItem key={item.title}>
                       <SidebarMenuButton asChild>
-                        <Link to={item.url}>
+                        <Link href={item.url}>
                           <item.icon />
                           <span>{item.title}</span>
                         </Link>
@@ -69,7 +69,7 @@ export const AdminLayout = () => {
         </Sidebar>
         <main className="flex-1 p-6">
           <SidebarTrigger className="mb-6" />
-          <Outlet />
+          { children }
         </main>
       </div>
     </SidebarProvider>
